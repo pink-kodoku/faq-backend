@@ -41,7 +41,7 @@ export class CategoryService {
     async remove(id: number) {
         const deleteResponse = await this.categoriesRepository.delete(id);
         if (!deleteResponse.affected) {
-            throw new HttpException("Post not found", HttpStatus.NOT_FOUND);
+            throw new HttpException("Category not found", HttpStatus.NOT_FOUND);
         }
     }
 }

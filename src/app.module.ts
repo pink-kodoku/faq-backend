@@ -2,6 +2,9 @@ import {Module} from '@nestjs/common';
 import {DatabaseModule} from './database/database.module';
 import {ConfigModule} from "@nestjs/config";
 import {CategoryModule} from './category/category.module';
+import { UserModule } from './user/user.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { QuestionModule } from './question/question.module';
 import * as Joi from '@hapi/joi';
 
 
@@ -14,9 +17,9 @@ import * as Joi from '@hapi/joi';
                 POSTGRES_USER: Joi.string().required(),
                 POSTGRES_PASSWORD: Joi.string().required(),
                 POSTGRES_DB: Joi.string().required(),
-                PORT: Joi.number(),
+                SESSION_SECRET: Joi.string().required(),
             })
-        }), CategoryModule, DatabaseModule],
+        }), CategoryModule, DatabaseModule, UserModule, AuthenticationModule, QuestionModule],
     controllers: [],
     providers: [],
 })
